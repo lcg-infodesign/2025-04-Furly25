@@ -1,18 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vulcani</title>
 
-    <title>Sketch</title>
+  <!-- Caricamento font Roboto da Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <script src="sketch.js" defer></script>
+</head>
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
-  </head>
 
-  <body>
-    <script src="sketch.js"></script>
-  </body>
+<body>
+  <header>
+    <h1>Alla scoperta dei vulcani!</h1>
+    <p>
+      Ogni punto rappresenta un vulcano, passaci sopra con il mouse per scoprire tutte le informazioni a riguardo
+    </p>
+  </header>
+
+  <main id="main">
+    <section id="map-card">
+      <div id="canvas-wrapper"></div>
+
+      <!-- vertical altitude legend -->
+      <aside id="altitude-legend" aria-hidden="true">
+  <h4>Altitudine</h4>
+
+  <div class="legend-row">
+    <span class="top">+7000 m</span>
+    <div class="bar"></div>
+    <span class="bottom">-6000 m</span>
+  </div>
+
+  <p class="legend-caption">
+    Il colore dei punti sulla mappa segue questo gradiente di altitudine.
+  </p>
+</aside>
+
+      <!-- tooltip card -->
+      <div id="tooltip" role="dialog" aria-hidden="true">
+        <div class="tt-title">Titolo</div>
+        <div class="tt-body"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Laboratorio di Information design – “Visione d’insieme” - Giulia Furlani
+     <img src="logo politecnico.png" alt="Logo Politecnico di Milano" class="logo-poli">
+ 
+  </footer>
+</body>
 </html>

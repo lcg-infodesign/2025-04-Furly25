@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vulcani - dettaglio</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- p5 + sketch di dettaglio -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <script src="detail_sketch.js" defer></script>
+</head>
+
+<body class="detail-page">
+  <header>
+    <h1>Alla scoperta dei vulcani!</h1>
+    <p>Informazioni di dettaglio</p>
+  </header>
+
+  <main id="main">
+    <section id="map-card">
+      <div id="canvas-wrapper"></div>
+
+      <div id="type-legend">
+  <h4>Legenda glifi</h4>
+  
+  <ul>
+    <!-- STRATOVOLCANO -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M10 90 L40 20 L60 20 L90 90 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Stratovolcano”</strong><br>          
+        </div>
+      </div>
+    </li>
+
+    <!-- SHIELD -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M5 85 L30 45 L70 45 L95 85 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Shield volcano”</strong><br>          
+        </div>
+      </div>
+    </li>
+
+    <!-- LAVA DOME -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 80 A35 25 0 0 1 85 80"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+        </svg>
+        <div>
+          <strong>Glifo “Lava dome”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- LAVA CONE -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 85 L50 20 L85 85 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Lava cone”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- CALDERA -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <line x1="10" y1="50" x2="90" y2="50"
+                stroke="#FF8C00" stroke-width="6"
+                stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Caldera”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- CONE (CINDER / TUFF) -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 85 L50 25 L85 85 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Cone”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- MAAR / TUFF RING -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 70 A35 25 0 0 1 85 70"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+          <path d="M30 70 A20 15 0 0 1 70 70"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+        </svg>
+        <div>
+          <strong>Glifo “Maars / Tuff ring”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- CRATER SYSTEM -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 70 A13 10 0 0 1 35 70"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+          <path d="M40 70 A13 10 0 0 1 60 70"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+          <path d="M65 70 A13 10 0 0 1 85 70"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+        </svg>
+        <div>
+          <strong>Glifo “Crater system”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- EXPLOSION CRATER -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M10 60 L40 60 L50 50 L60 60 L90 60"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Explosion crater”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- FISSURE VENT -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <line x1="10" y1="60" x2="90" y2="60"
+                stroke="#FF8C00" stroke-width="6"
+                stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Fissure vent”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- SUBMARINE -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M10 70 L35 40 L65 40 L90 70 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M10 80 Q25 90 40 80 T70 80 T90 80"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Submarine volcano”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- SUBGLACIAL -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <line x1="20" y1="25" x2="80" y2="25"
+                stroke="#FF8C00" stroke-width="6"/>
+          <path d="M15 85 L40 30 L60 30 L85 85 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Subglacial volcano”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- FIELD -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M15 80 L15 60 M30 80 L30 55 M45 80 L45 50 M60 80 L60 52 M75 80 L75 60"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Field”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- COMPLEX -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M10 90 L40 25 L60 25 L90 90 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M50 90 L70 50 L85 90 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Complex”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- OTHER / UNKNOWN -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <rect x="25" y="30" width="50" height="40"
+                fill="none" stroke="#FF8C00" stroke-width="6"/>
+        </svg>
+        <div>
+          <strong>Glifo “Other / Unknown”</strong><br>
+        </div>
+      </div>
+    </li>
+
+    <!-- GENERIC / FALLBACK -->
+    <li>
+      <div class="glyph-row">
+        <svg class="glyph-icon" viewBox="0 0 100 100">
+          <path d="M10 90 L35 40 L50 65 L65 35 L90 90 Z"
+                fill="none" stroke="#FF8C00" stroke-width="6"
+                stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Glifo “Generico”</strong><br>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+      <a href="index.html" class="back-link">← Torna alla mappa dei vulcani</a>
+    </section>
+  </main>
+
+  <footer>
+    Laboratorio di Information design – “Visione di dettaglio” - Giulia Furlani
+    <img src="logo politecnico.png" alt="Logo Politecnico di Milano" class="logo-poli">
+  </footer>
+</body>
+</html>
